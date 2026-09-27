@@ -12,41 +12,77 @@ document.addEventListener("DOMContentLoaded", () => {
         const card = cards[index];
         const container = track.parentElement;
 
+        // Xác định card active
         cards.forEach((item, i) => {
             item.classList.toggle("active", i === index);
         });
 
-        const x =
-            container.offsetWidth / 2 -
-            card.offsetLeft -
-            card.offsetWidth / 2;
+        // =========================
+        // MOBILE
+        // =========================
+        if (window.innerWidth <= 480) {
+            const x =
+                container.offsetWidth / 2 -
+                card.offsetLeft -
+                card.offsetWidth / 2;
 
-        track.style.transform = `translateX(${x}px)`;
+            track.style.transform = `translateX(${x}px)`;
+        }
+
+        // =========================
+        // DESKTOP
+        // =========================
+        else {
+            const x =
+                container.offsetWidth / 2 -
+                card.offsetLeft -
+                card.offsetWidth / 2;
+
+            track.style.transform = `translateX(${x}px)`;
+        }
+
+        // Cập nhật số thứ tự
         counter.textContent = `${index + 1} / ${cards.length}`;
     }
 
+    // Next
     function nextSlide() {
         index = (index + 1) % cards.length;
         update();
     }
 
+    // Previous
     function prevSlide() {
         index = (index - 1 + cards.length) % cards.length;
         update();
     }
 
+    // Button
     next.addEventListener("click", nextSlide);
     prev.addEventListener("click", prevSlide);
 
+    // Keyboard
     document.addEventListener("keydown", (e) => {
-        if (e.key === "ArrowRight") nextSlide();
-        if (e.key === "ArrowLeft") prevSlide();
+        if (e.key === "ArrowRight") {
+            nextSlide();
+        }
+
+        if (e.key === "ArrowLeft") {
+            prevSlide();
+        }
     });
 
+    // Resize
     window.addEventListener("resize", update);
 
+    // Chạy lần đầu
     update();
 });
+
+
+// ===============================
+// SCROLL REVEAL
+// ===============================
 
 const reveals = document.querySelectorAll(".reveal");
 
