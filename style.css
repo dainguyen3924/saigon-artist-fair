@@ -752,9 +752,13 @@ footer div a:hover {
     .pic-desc div:first-child {
         width: 90%;
         height: auto;
-        aspect-ratio: 5 / 3;
+        aspect-ratio: auto;
     }
-
+    .pic-desc div:first-child img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    }
     .pic-desc div:nth-child(2),
     .pic-desc div:last-child {
         width: 90%;
@@ -781,7 +785,7 @@ footer div a:hover {
 
     .pic-cluster__wrap > div {
         grid-area: auto !important;
-        aspect-ratio: 1;
+        aspect-ratio: auto;
     }
 
 
@@ -827,8 +831,10 @@ footer div a:hover {
     }
 
     .pic-cluster2__images div img {
+        width: 100%;
         height: auto;
-        aspect-ratio: 3 / 4;
+        aspect-ratio: auto;
+        object-fit: contain;
     }
 
 
